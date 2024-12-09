@@ -12,7 +12,7 @@ const IndexPage = () => {
           <p className="font-semibold select-none hover:text-gray-600">
             Projects
           </p>
-          <p className="ml-16 font-semibold select-none hover:text-gray-600">
+          <p className="ml-16 font-semibold select-none hover:text-gray-500">
             EN
           </p>
         </div>
