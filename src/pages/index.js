@@ -2,7 +2,7 @@ import * as React from "react";
 
 const IndexPage = () => {
   return (
-    <main className="w-full min-h-screen font-sans text-white bg-gray-950">
+    <main className="w-full min-h-screen font-sans text-white bg-black">
       <nav className="fixed top-0 left-0 z-10 w-full px-8 py-4 bg-black">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">
