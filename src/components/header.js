@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activePage, setActivePage] = useState("#Home");
+
+  const handlePageChange = (page) => {
+    setActivePage(page);
+  };
 
   return (
     <nav className="fixed top-0 left-0 z-10 w-full px-6 py-4 shadow-md bg-slate-900">
@@ -19,7 +24,12 @@ function Header() {
           <div className="flex items-center">
             <a
               href="#Home"
-              className="text-xl font-semibold text-white transition duration-300 ease-in-out hover:text-blue-400"
+              className={`text-xl font-semibold transition duration-300 ease-in-out ${
+                activePage === "#Home"
+                  ? " border-b-2 border-blue-400"
+                  : "text-white"
+              } hover:text-blue-400`}
+              onClick={() => handlePageChange("#Home")}
             >
               Koti
             </a>
@@ -28,20 +38,32 @@ function Header() {
           <div className="flex items-center ml-auto space-x-8">
             <a
               href="#Projects"
-              className="text-lg font-semibold text-white transition duration-300 ease-in-out hover:text-blue-400"
+              className={`text-lg font-semibold transition duration-300 ease-in-out ${
+                activePage === "#Projects"
+                  ? " border-b-2 border-blue-400"
+                  : "text-white"
+              } hover:text-blue-400`}
+              onClick={() => handlePageChange("#Projects")}
             >
               Projektit
             </a>
             <a
               href="#Contact"
-              className="text-lg font-semibold text-white transition duration-300 ease-in-out hover:text-blue-400"
+              className={`text-lg font-semibold transition duration-300 ease-in-out ${
+                activePage === "#Contact"
+                  ? " border-b-2 border-blue-400"
+                  : "text-white"
+              } hover:text-blue-400`}
+              onClick={() => handlePageChange("#Contact")}
             >
               Yhteystiedot
             </a>
-            <a href="#EN">
-              <p className="ml-8 text-lg font-semibold text-white transition duration-300 ease-in-out hover:text-blue-400">
-                EN
-              </p>
+            <a
+              href="#EN"
+              className={`text-lg font-semibold transition duration-300 ease-in-out hover:text-blue-400`}
+              onClick={() => handlePageChange("#EN")}
+            >
+              EN
             </a>
           </div>
         </section>
