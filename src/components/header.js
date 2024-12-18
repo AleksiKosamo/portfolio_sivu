@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import { Link } from "gatsby";
 
 function Header({ activePage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isEnglish, setIsEnglish] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prevState) => !prevState);
+  };
+
+  const toggleLanguage = () => {
+    setIsEnglish(!isEnglish);
+  };
+
+  const getLocalizedPath = (path) => {
+    if (isEnglish) {
+      if (path.startsWith("/eng")) return path;
+      return `/eng${path}`;
+    }
+    return path.replace("/eng", "");
   };
 
   return (
@@ -35,58 +49,56 @@ function Header({ activePage }) {
         <section className="justify-between hidden w-full h-full md:flex">
           <div className="flex items-center">
             <a
-              href="http://localhost:8000/"
+              href={getLocalizedPath("/")}
               className={`text-xl font-semibold transition duration-300 ease-in-out ${
-                activePage === "http://localhost:8000/"
-                  ? "border-b-2 border-blue-400"
-                  : "text-white"
+                activePage === "/" ? "border-b-2 border-blue-400" : "text-white"
               } hover:text-blue-400`}
             >
-              Koti
+              {isEnglish ? "Home" : "Koti"}
             </a>
           </div>
 
           <div className="flex items-center ml-auto space-x-8">
             <a
-              href="/projects"
+              href={getLocalizedPath("/projects")}
               className={`text-lg font-semibold transition duration-300 ease-in-out ${
                 activePage === "/projects"
                   ? "border-b-2 border-blue-400"
                   : "text-white"
               } hover:text-blue-400`}
             >
-              Projektit
+              {isEnglish ? "Projects" : "Projektit"}
             </a>
             <a
-              href="/contacts"
+              href={getLocalizedPath("/contacts")}
               className={`text-lg font-semibold transition duration-300 ease-in-out ${
-                activePage === "#Contact"
+                activePage === "/contacts"
                   ? "border-b-2 border-blue-400"
                   : "text-white"
               } hover:text-blue-400`}
             >
-              Yhteystiedot
+              {isEnglish ? "Contact" : "Yhteystiedot"}
             </a>
             <a
-              href="#EN"
+              onClick={toggleLanguage}
               className={`text-lg font-semibold transition duration-300 ease-in-out ${
                 activePage === "#EN"
                   ? "border-b-2 border-blue-400"
                   : "text-white"
-              } hover:text-blue-400`}
+              } hover:text-blue-400 cursor-pointer`}
             >
-              EN
+              {isEnglish ? "FI" : "EN"}
             </a>
           </div>
         </section>
 
         <a
-          href="#EN"
+          onClick={toggleLanguage}
           className={`text-lg font-semibold md:hidden transition duration-300 ease-in-out ${
             activePage === "#EN" ? "border-b-2 border-blue-400" : "text-white"
-          } hover:text-blue-400`}
+          } hover:text-blue-400 cursor-pointer`}
         >
-          EN
+          {isEnglish ? "FI" : "EN"}
         </a>
       </div>
 
@@ -94,34 +106,32 @@ function Header({ activePage }) {
         <section className="w-full p-4 text-white md:hidden bg-slate-900">
           <div className="flex flex-col space-y-4">
             <a
-              href="http://localhost:8000/"
+              href={getLocalizedPath("/")}
               className={`text-xl font-semibold transition duration-300 ease-in-out ${
-                activePage === "http://localhost:8000/"
-                  ? "border-b-2 border-blue-400"
-                  : "text-white"
+                activePage === "/" ? "border-b-2 border-blue-400" : "text-white"
               } hover:text-blue-400`}
             >
-              Koti
+              {isEnglish ? "Home" : "Koti"}
             </a>
             <a
-              href="/projects"
+              href={getLocalizedPath("/projects")}
               className={`text-xl font-semibold transition duration-300 ease-in-out ${
                 activePage === "/projects"
                   ? "border-b-2 border-blue-400"
                   : "text-white"
               } hover:text-blue-400`}
             >
-              Projektit
+              {isEnglish ? "Projects" : "Projektit"}
             </a>
             <a
-              href="/contacts"
+              href={getLocalizedPath("/contacts")}
               className={`text-xl font-semibold transition duration-300 ease-in-out ${
-                activePage === "#Contact"
+                activePage === "/contacts"
                   ? "border-b-2 border-blue-400"
                   : "text-white"
               } hover:text-blue-400`}
             >
-              Yhteystiedot
+              {isEnglish ? "Contact" : "Yhteystiedot"}
             </a>
           </div>
         </section>
