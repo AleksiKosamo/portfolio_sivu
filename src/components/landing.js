@@ -2,7 +2,7 @@ import React from "react";
 
 function Landing() {
   return (
-    <section className="flex flex-col items-center justify-center h-screen px-8 text-center">
+    <section className="flex flex-col items-center justify-center h-screen px-8 text-center bg-gradient-to-t from-slate-950 via-slate-800 to-slate-950">
       <h1 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl lg:text-6xl">
         Tervetuloa Portfoliooni
       </h1>
@@ -13,7 +13,7 @@ function Landing() {
 
       <a
         className="flex items-center justify-center w-auto h-16 px-8 py-3 text-lg font-semibold text-white transition duration-300 rounded-lg shadow-lg bg-gradient-to-t from-blue-900 to-blue-500 hover:from-blue-600 hover:to-blue-400 sm:text-xl"
-        href="#Projects"
+        href="/projects"
       >
         Tutustu Töihini
       </a>

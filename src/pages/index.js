@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 
 const IndexPage = () => {
   return (
-    <main className="w-full min-h-screen font-sans text-white bg-gradient-to-t from-slate-950 via-slate-800 to-slate-950">
+    <main className="w-full min-h-screen font-sans text-white bg-slate-800">
       <Header active="http://localhost:8000/" />
       <Landing />
       <Dropdown />
